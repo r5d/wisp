@@ -1,9 +1,9 @@
 #!/usr/bin/env racket
-#
-# SPDX-License-Identifier: ISC
-#
-# Copyright © 2019 rsiddharth <s@ricketyspace.net>
-#
+;;
+;; SPDX-License-Identifier: ISC
+;;
+;; Copyright © 2019 rsiddharth <s@ricketyspace.net>
+;;
 
 #lang racket/base
 
