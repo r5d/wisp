@@ -9,6 +9,7 @@
 
 (require net/http-client)
 (require racket/port)
+(require sxml/sxpath)
 (require openssl)
 
 (define HOST "news.ycombinator.com")
