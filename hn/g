@@ -14,6 +14,7 @@
 (require openssl)
 
 (require html-parsing)
+(require sxml)
 (require sxml/sxpath)
 
 
@@ -33,4 +34,9 @@
   (let ((x (html->xexp (fp)))
         (s (sxpath "//tr[@class=\"athing\"]")))
     (take (s x) 20)))
+
+(define (athing:id a)
+  (let ((id (sxml:attr a 'id)))
+    (if (empty? id) (error "athing:id: Unable to get id")
+        id)))
 
