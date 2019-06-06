@@ -40,3 +40,9 @@
     (if (empty? id) (error "athing:id: Unable to get id")
         id)))
 
+(define (athing:link a)
+  (let* ((s (sxpath "//a[@class=\"storylink\"]"))
+         (l (s a)))
+    (list (sxml:attr (car l) 'href)
+          (sxml:text l))))
+
