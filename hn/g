@@ -7,11 +7,13 @@
 
 #lang racket/base
 
+(require racket/list)
 (require racket/port)
 
 (require net/http-client)
 (require openssl)
 
+(require html-parsing)
 (require sxml/sxpath)
 
 
@@ -25,3 +27,10 @@
     (define-values (status headers port)
       (http-conn-sendrecv! hc "/"))
     (port->string port)))
+
+(define (athings)
+  "Get 20 athings from HN front page."
+  (let ((x (html->xexp (fp)))
+        (s (sxpath "//tr[@class=\"athing\"]")))
+    (take (s x) 20)))
+
