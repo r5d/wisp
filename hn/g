@@ -7,10 +7,13 @@
 
 #lang racket/base
 
-(require net/http-client)
 (require racket/port)
-(require sxml/sxpath)
+
+(require net/http-client)
 (require openssl)
+
+(require sxml/sxpath)
+
 
 (define HOST "news.ycombinator.com")
 
