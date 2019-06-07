@@ -30,17 +30,19 @@
     (port->string port)))
 
 (define (athings)
-  "Get 20 athings from HN front page."
+  "Get top 20 athings from HN front page."
   (let ((x (html->xexp (fp)))
         (s (sxpath "//tr[@class=\"athing\"]")))
     (take (s x) 20)))
 
 (define (athing:id a)
+  "Return athing id"
   (let ((id (sxml:attr a 'id)))
     (if (empty? id) (error "athing:id: Unable to get id")
         id)))
 
 (define (athing:link a)
+  "Return athing link (HREF DESC)"
   (let* ((s (sxpath "//a[@class=\"storylink\"]"))
          (l (s a)))
     (list (sxml:attr (car l) 'href)
