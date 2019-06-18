@@ -73,3 +73,8 @@
 (define (athings:file)
   (build-path (athings:data-dir) (slug)))
 
+(define (athings:hash f)
+  (cond ((file-exists? f)
+         (call-with-input-file f (λ (in) (read-json in))))
+        (else (make-immutable-hash))))
+
