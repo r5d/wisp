@@ -44,12 +44,13 @@
          (l (s a)))
     (list (sxml:text l) (sxml:attr (car l) 'href))))
 
-(define (athings:hash h athings:sxml)
+(define (athings:latest h athings:sxml)
   (cond ((empty? athings:sxml) h)
         (else
          (let* ((athing (car athings:sxml))
                 (id (athing:id athing))
                 (link (athing:link athing)))
-           (athings:hash (hash-set h id link)
-                         (cdr athings:sxml))))))
+           (athings:latest (hash-set h (string->symbol id) link)
+                           (cdr athings:sxml))))))
+
 
