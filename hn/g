@@ -36,8 +36,7 @@
 (define (athing:id a)
   "Return athing id"
   (let ((id (sxml:attr a 'id)))
-    (if (empty? id) (error "athing:id: Unable to get id")
-        id)))
+    (if (empty? id) (error "athing:id: Unable to get id") id)))
 
 (define (athing:link a)
   "Return athing link (HREF DESC)"
