@@ -70,4 +70,6 @@
     (unless (directory-exists? dir) (make-directory dir))
     dir))
 
+(define (athings:file)
+  (build-path (athings:data-dir) (slug)))
 
