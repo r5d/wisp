@@ -97,3 +97,4 @@
     (call-with-output-file f (λ (out) (write-json h out)) #:exists 'truncate)
     (athings:index (slug))))
 
+(g)
