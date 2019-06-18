@@ -42,8 +42,7 @@
   "Return athing link (HREF DESC)"
   (let* ((s (sxpath "//a[@class=\"storylink\"]"))
          (l (s a)))
-    (list (sxml:attr (car l) 'href)
-          (sxml:text l))))
+    (list (sxml:text l) (sxml:attr (car l) 'href))))
 
 (define (athings:hash h athings:sxml)
   (cond ((empty? athings:sxml) h)
