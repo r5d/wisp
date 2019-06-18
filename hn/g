@@ -22,11 +22,9 @@
 
 (define (fp)
   "Fetch HN Front Page."
-  (let ((hc (http-conn-open HOST
-                            #:ssl? (ssl-make-client-context 'secure)
+  (let ((hc (http-conn-open HOST #:ssl? (ssl-make-client-context 'secure)
                             #:port 443)))
-    (define-values (status headers port)
-      (http-conn-sendrecv! hc "/"))
+    (define-values (status headers port) (http-conn-sendrecv! hc "/"))
     (port->string port)))
 
 (define (athings)
