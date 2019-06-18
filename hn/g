@@ -84,3 +84,10 @@
     (cond ((file-exists? f) (call-with-input-file f (λ (in) (read-json in))))
           (else '()))))
 
+(define (athings:index slug)
+  (let ((f (build-path (athings:data-dir) "list"))
+        (l (athings:list)))
+    (unless (member slug l)
+        (call-with-output-file f (λ (out) (write-json (cons slug l) out))
+          #:exists 'truncate))))
+
