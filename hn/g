@@ -13,6 +13,7 @@
 (require racket/format)
 (require racket/string)
 
+(require json)
 (require net/http-client)
 (require openssl)
 
@@ -77,4 +78,9 @@
   (cond ((file-exists? f)
          (call-with-input-file f (λ (in) (read-json in))))
         (else (make-immutable-hash))))
+
+(define (athings:list)
+  (let ((f (build-path (athings:data-dir) "list")))
+    (cond ((file-exists? f) (call-with-input-file f (λ (in) (read-json in))))
+          (else '()))))
 
