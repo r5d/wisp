@@ -7,9 +7,11 @@
 
 #lang racket/base
 
+(require racket/date)
 (require racket/list)
 (require racket/port)
 (require racket/format)
+(require racket/string)
 
 (require net/http-client)
 (require openssl)
@@ -23,6 +25,12 @@
 
 
 (define (fmt n w) (~a n #:width w #:align 'right #:pad-string "0"))
+
+(define (slug)
+  (let* ((d (current-date)))
+    (string-join `(,(fmt (date-year d) 4)
+                   ,(fmt (date-month d) 2)
+                   ,(fmt (date-day d) 2)) "")))
 
 (define (fp)
   "Fetch HN Front Page."
