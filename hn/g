@@ -91,3 +91,9 @@
         (call-with-output-file f (λ (out) (write-json (cons slug l) out))
           #:exists 'truncate))))
 
+(define (g)
+  (let* ((f (athings:file))
+         (h (athings:latest (athings:hash f) (athings))))
+    (call-with-output-file f (λ (out) (write-json h out)) #:exists 'truncate)
+    (athings:index (slug))))
+
