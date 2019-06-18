@@ -9,6 +9,7 @@
 
 (require racket/list)
 (require racket/port)
+(require racket/format)
 
 (require net/http-client)
 (require openssl)
@@ -19,6 +20,9 @@
 
 
 (define HOST "news.ycombinator.com")
+
+
+(define (fmt n w) (~a n #:width w #:align 'right #:pad-string "0"))
 
 (define (fp)
   "Fetch HN Front Page."
