@@ -53,4 +53,9 @@
            (athings:latest (hash-set h (string->symbol id) link)
                            (cdr athings:sxml))))))
 
+(define (athings:data-dir)
+  (let ((dir (build-path (find-system-path 'orig-dir) "data")))
+    (unless (directory-exists? dir) (make-directory dir))
+    dir))
+
 
