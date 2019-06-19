@@ -67,7 +67,7 @@
                            (cdr athings:sxml))))))
 
 (define (athings:data-dir)
-  (let ((dir (build-path (find-system-path 'orig-dir) "data")))
+  (let ((dir (build-path (find-system-path 'orig-dir) "data/hn")))
     (unless (directory-exists? dir) (make-directory dir))
     dir))
 
@@ -91,10 +91,10 @@
         (call-with-output-file f (λ (out) (write-json (cons slug l) out))
           #:exists 'truncate))))
 
-(define (g)
+(define (hn)
   (let* ((f (athings:file))
          (h (athings:latest (athings:hash f) (athings))))
     (call-with-output-file f (λ (out) (write-json h out)) #:exists 'truncate)
     (athings:index (slug))))
 
-(g)
+(hn)
