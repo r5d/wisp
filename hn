@@ -76,7 +76,10 @@
 
 (define (athings:hash f)
   (cond ((file-exists? f)
-         (call-with-input-file f (λ (in) (read-json in))))
+         (call-with-input-file f
+           (λ (in)
+             (let ((j  (read-json in)))
+               (if (eof-object? j) (make-immutable-hash) j)))))
         (else (make-immutable-hash))))
 
 (define (athings:list)
